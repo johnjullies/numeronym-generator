@@ -18,7 +18,10 @@ var InputForm = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (InputForm.__proto__ || Object.getPrototypeOf(InputForm)).call(this, props));
 
-    _this.state = { value: '' };
+    _this.state = {
+      value: '',
+      result: ''
+    };
 
     _this.handleChange = _this.handleChange.bind(_this);
     return _this;
@@ -27,7 +30,19 @@ var InputForm = function (_React$Component) {
   _createClass(InputForm, [{
     key: 'handleChange',
     value: function handleChange(event) {
-      this.setState({ value: event.target.value });
+      this.setState({
+        value: event.target.value,
+        result: this.handleInput(event.target.value)
+      });
+    }
+  }, {
+    key: 'handleInput',
+    value: function handleInput(inputStr) {
+      if (inputStr.length < 3) {
+        return inputStr;
+      } else {
+        return '' + inputStr.charAt(0) + (inputStr.length - 2) + inputStr.charAt(inputStr.length - 1);
+      }
     }
   }, {
     key: 'handleSubmit',
@@ -49,7 +64,7 @@ var InputForm = function (_React$Component) {
         React.createElement(
           'p',
           null,
-          this.state.value
+          this.state.result
         )
       );
     }
