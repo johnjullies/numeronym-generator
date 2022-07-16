@@ -1,0 +1,15 @@
+h2,
+label {
+  font-family: sans-serif;
+}
+
+input {
+  margin-left: 15px;
+  padding: 4px;
+  font-size: 16px;
+}
+
+p {
+  font-size: 18px;
+  margin-left: 62px;
+}
