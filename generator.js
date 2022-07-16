@@ -2,25 +2,31 @@
 
 const e = React.createElement;
 
-class LikeButton extends React.Component {
+class InputForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { liked: false };
+    this.state = { value: '' };
+
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({value: event.target.value});
   }
 
   render() {
-    if (this.state.liked) {
-      return 'You liked this.';
-    }
-
-    return e(
-      'button',
-      { onClick: () => this.setState({ liked: true }) },
-      'Like'
+    return (
+      <form>
+        <label>
+          Input:
+          <input type="text" value={this.state.value} onChange={this.handleChange} />
+        </label>
+        <p>{this.state.value}</p>
+      </form>
     );
   }
 }
 
 const domContainer = document.querySelector('#input-box');
 const root = ReactDOM.createRoot(domContainer);
-root.render(e(LikeButton));
+root.render(e(InputForm));
